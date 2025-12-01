@@ -1,6 +1,9 @@
 # 💧MinatsukiTone  
 Minatsuki Tone  Web Music Player - The official successor of CaffeineMusic!   
 https://minatsuki.pages.dev  
+
+🌐 Supported languages: JP(日本語 Default) | EN | CN (簡体字・繁体字)  
+
 <img width="1623" height="847" alt="image" src="https://github.com/user-attachments/assets/3957bf19-5272-4070-bc90-d3d79aad0030" />
 
 MinatsukiToneは、歌詞表示対応のWebアプリです。  
