@@ -3,12 +3,12 @@ Minatsuki Tone  Web Music Player - The official successor of CaffeineMusic!
 
 ##  About the Concept and Name: MinatsukiTone  
 
-The name **"MinatsukiTone"** is a variation on the Japanese word **"Minazuki" (水無月)**, which traditionally refers to **June**, the sixth month of the Japanese lunar calendar.  
+The name **"Minatsuki"** is a variation on the Japanese word **"Minazuki" (水無月)**, which traditionally refers to **June**, the sixth month of the Japanese lunar calendar.  
 
 The visual concept is derived directly from the kanji that form the word:  
 
 * **水 (Mizu)**: **Water**  
-* **無 (Na)**: A connecting particle (literally "without" or "nothing")  
+* **無 (Na)**: A connecting particle (This character literally means "nothing" or "without," but in this specific context, it is interpreted as a particle connecting "Water" and "Month" or related to the season.)   
 * **月 (Tsuki)**: **Month/Moon**  
 
 ---
