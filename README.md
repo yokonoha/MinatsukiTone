@@ -40,7 +40,7 @@ JP: このWebアプリケーションではBSDライセンスの適用された�
 リンク: https://github.com/aadsm/jsmediatags  
 
 EN: This web application uses the BSD licensed component “jsmediatags”.  
-The rights notice and BSD license is listed at the bottom of the main screen, and I have also included them in the License file. Thank you for the great and splendid js library!  
+The rights notice and BSD license is listed at the bottom of the main screen, and I have also included them in the this page and NOTICE file. Thank you for the great and splendid js library!  
 Link: https://github.com/aadsm/jsmediatags  
 
 ## スタイルシート(CSS)について/About this stylesheet(CSS)  
