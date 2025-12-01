@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MinatsukiTone</title>
+    <meta name="description" content="歌詞表示にも対応!ローカル音楽ファイル再生Webアプリ-MinatsukiToneです。| MinatsukiTone - Supports display of lyrics! A modern web app for playing local music files">
+    <meta name="keywords" content="Minatsuki, 水無月,Minazuki,MinatsukiTone,MinazukiTone,CaffeineMusic,CaffeineMusic2,Y.Yokoha,YokochaYokoha,横茶横葉">
+    <link rel="stylesheet" href="fsoverride.css">
+</head>
+<style>
+    *{
+        user-select: none;
+    }
+    .btn
+    {
+        width: 40px;
+        height: 30px;
+        cursor: pointer;
+    }
+  textarea
+  {
+    background-color:white;
+  }
+#album-art
+{
+    width: 50vw;
+    max-width: 400px;
+    border-radius: 15px;
+}
+textarea
+{
+    width: 100%;
+    resize: none;
+}
+
+#lyrics
+{
+    width: 50vw;
+    height: 30vh;
+    overflow-y: scroll;
+}
+#splash
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    z-index: 1000;
+    background-image: url('./art.png'); 
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat;
+}
+.fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+#drop-area {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            border: 2px dashed #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+        }
+        #drop-area.active {
+            opacity: 1;
+            pointer-events: auto;
+            background-color: rgba(240, 240, 240, 0.8);
+        }
+       @media (min-width:500px) {
+        .que{
+            display: flex;
+            align-items: center;
+            text-align: left;
+            justify-content: space-between;
+        }
+            #album-art{
+                max-width: 30vw;
+            }
+            #mediaq2{
+                width: 100%;
+            }
+       }
+
+</style>
+ <body>
+  <main class="container">
+    <section class="main">
+        
+        <article class="Q" id="mediaq"><div class="que">
+    <div id="aaholder" style="display: flex; justify-content: center; align-items: center;">
+    <img id="album-art" src="./art.png" alt="Album art">
+    
+</div>
+    <div id="mediaq2" style="text-align: center;">
+        <div style="display: block;">
+    <h2 id="title">MinatsukiTone</h2>
+    <p id="artist">ファイルを読み込むと</p>
+    <p id="album">再生します</p>
+</div>
+</div>
+</div>
+<div>
+    <div id="lyricsDiv" style="border-color:transparent; align-items: center; text-align: center; justify-content: center; width: 100%; color: #d1e0ff;"></div>
+     
+    <input type="range" id="seek-bar" value="0" max="100" style="width: 100%;">
+    <div style="display: flex; justify-content: space-between;">
+    <p id="time0">0:00</p>
+    <p id="time1">0:00</p>
+    </div>
+<div class="G" style="align-items: center; justify-content: center; display: flex;">
+    <img src="prev.png" class="btn" id="prev-button" alt="前の曲">
+    <img src="play.png" class="btn" id="play-pause-button" alt="再生/一時停止">
+    <img src="next.png" class="btn" id="next-button" alt="次の曲"> 
+</div>
+</div>
+
+      </article>
+        <article class="A">
+<div style="display: flex;">
+    <p id="spd">Speed:1x</p>
+    <input type="range" id="speed-control" value="1" min="0.5" max="2" step="0.1" style="width: 100%;"></div>
+    <div style="display: flex;">
+        <p>Volume</p><input type="range" id="volume-control" min="0" max="1" step="0.1" value="1" style="width: 100%;">
+    </div>
+
+    <audio id="audio-player" style="display:none;"></audio> <!--CORE!-->
+
+<div id="drop-area" class="drop-area">ファイルやフォルダをここにドロップすると再生します。</div>
+      </article>
+
+      <article class="V" style="align-items: center; justify-content: center; text-align: center;">
+        <p id="translate6">ファイル選択</p>
+<p><small id="translate7">フォルダを選択するとプレイリストを作成します。</small></p>
+<div class="marks" style="justify-content: space-between; display: flex;">
+<div class="marks-r-b" onclick="fileInput.click()" id="translate1">単曲選択</div>
+<input type="file" id="file-input" accept="audio/*" style="display:none;">
+<div class="marks-r-y" onclick="folderInput.click()" id="translate2">フォルダ選択</div>
+<input type="file" id="folder-input" accept="audio/*" webkitdirectory multiple style="display:none;">
+</div>
+      </article>
+
+    </section>
+
+    <aside class="sidebar">
+        <div class="sidebar-box">
+            <span id="year"></span>/<span id="month"></span>/<span id="date"></span>
+<span id="day"></span><br>
+<span id="hour"></span>:<span id="min"></span> <small><span id="sec"></span></small>
+        </div>
+      <div class="sidebar-box">
+       <!--Insert--><p id="translate3">プレイリスト</p>
+    <p><small id="translate4">クリックまたはタップすると再生します。</small></p>
+    <div id="playlist">
+
+    </div>
+      </div>
+
+
+      <div class="sidebar-box">
+        <p id="translate5">オープンソースライセンス</p>
+        <details>
+            <p>このWebアプリではBSDライセンスの適用されたライブラリ"jsmediatags"を使用しています。</p>
+    <p>This site uses "jsmediatags". (BSD License)</p>
+<p>jsmediatags(BSD License)</p>
+<a href="https://github.com/aadsm/jsmediatags">https://github.com/aadsm/jsmediatags</a>
+<br>
+
+<textarea readonly name="BSD L indicator" rows="20" cols="20">
+    BSD License
+
+    Copyright (c) 2009 Opera Software ASA
+    
+    Copyright (c) 2015 António Afonso
+    
+    Copyright (c) 2008 Jacob Seidelin, http://blog.nihilogic.dk/
+    
+    Copyright (c) 2010 Joshua Kifer
+    
+    All rights reserved.
+    
+    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+    
+    Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+    
+    Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+    
+    Neither the name Facebook nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+    
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+</textarea>
+        </details>
+      </div>
+      </aside>
+  </main>
+      
+  <footer>
+  <!--Insert-->
+          <p><small>This page uses <a href="https://github.com/yokonoha/FSoverride" >FSLinear Override</a> and <a href="https://github.com/yokonoha/timesysRe">TimeSysRe</a>.</small></p>
+          <p><small>Source codes: <a href="https://github.com/yokonoha/MinatsukiTone">https://github.com/yokonoha/MinatsukiTone</a></small></p>
+          <p id="errs" style="display: none;">If you find any errors in the translation, please let me know! (<a href="mailto:yokochayokoha@duck.com">E-Mail</a>,<a href="https://x.com/yokocha_yokoha">X Account[Recommended]</a>)</p>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
+<script src="./wdvs.js"></script>
+<script src="./mpsys3.js"></script>
+<script src="./timesysre.js"></script>
+<script>
+    //日本語部分を英語・簡体・繁体に翻訳
+    const userLang = navigator.language || navigator.userLanguage;
+    if(userLang.startsWith('en'))
+    {
+        document.getElementById("title").innerText = "MinatsukiTone";
+        document.getElementById("artist").innerText = "Load a file";
+        document.getElementById("album").innerText = "to play";
+        document.getElementById('drop-area').innerText = "Drop files or folders here to play.";
+        document.getElementById('translate1').innerText = "Select a file";
+        document.getElementById('translate2').innerText = "Select a folder";
+        document.getElementById('translate3').innerText = "Playlist";
+        document.getElementById('translate4').innerText = "Click or tap to play";
+        document.getElementById('translate5').innerText = "Open Source Licenses";
+        document.getElementById("translate6").innerText = "File Selection";
+        document.getElementById("translate7").innerText = "Selecting a folder will create a playlist.";
+        document.getElementById("errs").style.display="block";
+    }
+    else if(userLang.startsWith('zh-CN'))
+    {
+        document.getElementById("title").innerText = "水无月音乐";
+        document.getElementById("artist").innerText = "加载文件";
+        document.getElementById("album").innerText = "以播放";
+        document.getElementById('drop-area').innerText = "将文件或文件夹拖放到此处以播放。";
+        document.getElementById('translate1').innerText = "选择文件";
+        document.getElementById('translate2').innerText = "选择文件夹";
+        document.getElementById('translate3').innerText = "播放列表";
+        document.getElementById('translate4').innerText = "点击或轻触以播放";
+        document.getElementById('translate5').innerText = "开源许可证";
+        document.getElementById("translate6").innerText = "文件选择";
+        document.getElementById("translate7").innerText = "选择文件夹将创建播放列表。";
+                document.getElementById("errs").style.display="block";
+    }
+        else if(userLang.startsWith('zh-Hans'))
+    {
+        document.getElementById("title").innerText = "水无月音乐";
+        document.getElementById("artist").innerText = "加载文件";
+        document.getElementById("album").innerText = "以播放";
+        document.getElementById('drop-area').innerText = "将文件或文件夹拖放到此处以播放。";
+        document.getElementById('translate1').innerText = "选择文件";
+        document.getElementById('translate2').innerText = "选择文件夹";
+        document.getElementById('translate3').innerText = "播放列表";
+        document.getElementById('translate4').innerText = "点击或轻触以播放";
+        document.getElementById('translate5').innerText = "开源许可证";
+        document.getElementById("translate6").innerText = "文件选择";
+        document.getElementById("translate7").innerText = "选择文件夹将创建播放列表。";
+                document.getElementById("errs").style.display="block";
+    }
+    else if(userLang.startsWith('zh-TW'))
+    {
+        document.getElementById("title").innerText = "水無月音樂";
+        document.getElementById("artist").innerText = "載入檔案";
+        document.getElementById("album").innerText = "以播放";
+        document.getElementById('drop-area').innerText = "將檔案或資料夾拖放到此處以播放。";
+        document.getElementById('translate1').innerText = "選擇檔案";
+        document.getElementById('translate2').innerText = "選擇資料夾";
+        document.getElementById('translate3').innerText = "播放清單";
+        document.getElementById('translate4').innerText = "點擊或輕觸以播放";
+        document.getElementById('translate5').innerText = "開放原始碼授權";
+        document.getElementById("translate6").innerText = "檔案選擇";
+        document.getElementById("translate7").innerText = "選擇資料夾將建立播放清單。";
+                document.getElementById("errs").style.display="block";
+    }
+</script>
+</html>
