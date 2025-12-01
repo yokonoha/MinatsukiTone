@@ -20,14 +20,14 @@ The name **"Minatsuki"** is a variation on the Japanese word **"Minazuki" (水�
 The visual concept is derived directly from the kanji that form the word:  
 
 * **水 (Mizu)**: **Water**  
-* **無 (Na)**: A connecting particle (This character literally means "nothing" or "without," but in this specific context, it is interpreted as a particle connecting "Water" and "Month" or related to the season.)   
+* **無 (Na)**: A connecting particle (This character literally means "nothing" or "without," but in this specific context, it is interpreted as a particle connecting "Water" and "Month".)   
 * **月 (Tsuki)**: **Month/Moon**  
 
 ---
 
 ### Relationship to the App's UI Colors  
 
-These kanji are the foundation of our design's color palette:  
+These kanji are the foundation of my design's colors:  
 
 1.  **Water (水):** This character is represented by **Mizuiro (水色), or "Water Blue,"** which serves as the bright, primary theme color for the UI.
 2.  **Moon (月):** This connection inspires the use of a **deep, subdued black** (or "Night Shade"). This hue evokes the **night sky gently illuminated by the moonlight**, providing necessary depth and a beautiful contrast to the Water Blue.  
