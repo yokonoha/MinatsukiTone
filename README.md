@@ -33,3 +33,61 @@ These kanji are the foundation of our design's color palette:
 2.  **Moon (月):** This connection inspires the use of a **deep, subdued black** (or "Night Shade"). This hue evokes the **night sky gently illuminated by the moonlight**, providing necessary depth and a beautiful contrast to the Water Blue.  
 
 These two core colors—Water Blue and Night Shade Black—define the unique visual identity of the MinatsukiTone user interface.  
+
+## 依存関係/Dependency  
+JP: このWebアプリケーションではBSDライセンスの適用されたコンポーネント「jsmediatags」を使用させていただいています。  
+権利表記やBSDライセンス条文に関してはメインの画面の下部に記載していますが、このファイルの下部にも記載しておきました。ホントに素晴らしいjsライブラリをありがとうございます!!  
+リンク: https://github.com/aadsm/jsmediatags  
+
+EN: This web application uses the BSD licensed component “jsmediatags”.  
+The rights notice and BSD license is listed at the bottom of the main screen, and I have also included them in the License file. Thank you for the great and splendid js library!  
+Link: https://github.com/aadsm/jsmediatags  
+
+## スタイルシート(CSS)について/About this stylesheet(CSS)  
+JP: このアプリのスタイルシートは横茶横葉作成のFSovwerrideを使用しています。このスタイルシートは配布ページの説明に従い、ご活用ください!  
+EN:  The style sheet for this application uses FSoverride created by Y.Yokoha.  
+
+## ウィジェット(TimeSysRe)について/About the clock widget(TimeSysRe)  
+TimeSysRe by Y.Yokoha  
+https://github.com/yokonoha/timesysRe  
+
+## 製作者情報/Authors  
+JP: 製作: 横茶横葉  
+    管理: 横茶横葉(Project YOKONOHA)  
+    デバッグ: 横茶横葉,Mikan  
+©2025 Project YOKONOHA  
+©2025 横茶横葉  
+
+EN: Creator: Y.Yokoha  
+Management: Project YOKONOHA  
+Debug Assist: Mikan  
+Debug: Y.Yokoha  
+©2025 Project YOKONOHA  
+©2025 Y.Yokoha  
+
+jsmediatags(BSD License)  
+<a href="https://github.com/aadsm/jsmediatags">https://github.com/aadsm/jsmediatags</a>  
+    BSD License
+
+    Copyright (c) 2009 Opera Software ASA
+    
+    Copyright (c) 2015 António Afonso
+    
+    Copyright (c) 2008 Jacob Seidelin, http://blog.nihilogic.dk/
+    
+    Copyright (c) 2010 Joshua Kifer
+    
+    All rights reserved.
+    
+    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+    
+    Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+    
+    Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+    
+    Neither the name Facebook nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+    
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+
