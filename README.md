@@ -1,14 +1,14 @@
 # 💧MinatsukiTone  
 Minatsuki Tone  Web Music Player - The official successor of CaffeineMusic!   
 https://minatsuki.pages.dev  
-<img width="1103" height="659" alt="MinatsukiTone Screenshot" src="https://github.com/user-attachments/assets/28d8b6a1-200b-45a3-aec9-c6e8540c1973" />
+<img width="1623" height="847" alt="image" src="https://github.com/user-attachments/assets/3957bf19-5272-4070-bc90-d3d79aad0030" />
 
 MinatsukiToneは、歌詞表示対応のWebアプリです。  
 CaffeineMusicとほぼ同じですが、画面サイズ追従精度の強化、歌詞表示対応化、操作感の向上させる仕組みを備えています!  
 ブラウザによって対応する音楽ファイル形式は異なりますが、一般的なブラウザはmp3, m4a, flac に対応しています。  
 歌詞は同期歌詞(lrc)とm4a埋め込み歌詞(ID3 [flacは非対応])に対応しています。ご自身で歌詞ファイルを自作(または購入)してご利用ください。  
 (不正または違法な手段で歌詞ファイルや音楽ファイルを入手する行為は絶対におやめください。そのような不正なファイルをMinatsukiToneへ読み込ませることは一切禁止とさせていただいております。)  
-
+<img width="1103" height="659" alt="MinatsukiTone Screenshot" src="https://github.com/user-attachments/assets/28d8b6a1-200b-45a3-aec9-c6e8540c1973" />  
 ## なぜ Minazukiではなく、Minatsuki?  
 そのままだとなんだか味気ないので、少しもじってみました!  
 名前の由来は下の英文をご参照ください。(日本語じゃなくてごめんなさい!)  
