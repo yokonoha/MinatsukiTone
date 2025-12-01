@@ -10,6 +10,15 @@ CaffeineMusicとほぼ同じですが、画面サイズ追従精度の強化、�
 (不正または違法な手段で歌詞ファイルや音楽ファイルを入手する行為は絶対におやめください。そのような不正なファイルをMinatsukiToneへ読み込ませることは一切禁止とさせていただいております。)  
 LRCファイルのサンプルはsamplelrcフォルダに入っています!  
 <img width="1103" height="659" alt="MinatsukiTone Screenshot" src="https://github.com/user-attachments/assets/28d8b6a1-200b-45a3-aec9-c6e8540c1973" />  
+
+## 警告メッセージについて/About warning messages  
+JP: 機能に制約のある特定のデバイスでは警告が表示されることがあります。  
+ファイルピッカーから読み込むことができず、別な方法を使用しなければならない場合や、そもそもブラウザ自体がファイルピッカーに対応していない場合に表示されることがあります。  
+この警告表示が表示されるデバイスでは一部またはすべての機能が使用できない場合があります。  
+EN: Warnings may appear on certain devices with functional limitations.  
+This warning may appear when files cannot be loaded from the file picker and an alternative method must be used, or when the browser itself does not support the file picker.  
+On devices displaying this warning, some or all features may be unavailable.  
+
 ## なぜ Minazukiではなく、Minatsuki?  
 そのままだとなんだか味気ないので、少しもじってみました!  
 名前の由来は下の英文をご参照ください。(日本語じゃなくてごめんなさい!)  
