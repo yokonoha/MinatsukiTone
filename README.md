@@ -19,7 +19,7 @@ EN: Warnings may appear on certain devices with functional limitations.
 This warning may appear when files cannot be loaded from the file picker and an alternative method must be used, or when the browser itself does not support the file picker.  
 On devices displaying this warning, some or all features may be unavailable.  
 
-## なぜ Minazukiではなく、Minatsuki?  
+## なぜ MinazukiでもMinadukiでもなく、Minatsuki?  
 そのままだとなんだか味気ないので、少しもじってみました!  
 名前の由来は下の英文をご参照ください。(日本語じゃなくてごめんなさい!)  
 
