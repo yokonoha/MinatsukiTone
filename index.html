@@ -108,8 +108,53 @@ textarea
             }
        }
 
+#main
+{
+    display: none; 
+}
+#splash
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    z-index: 1000;
+    background-image: url('./art.png'); 
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat;
+}
+.fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
 </style>
  <body>
+      <div id="splash" >
+<div id="splashc"style="width: 80vw; display: flex;align-items: center;justify-content:center;">
+<div class="C">
+    <div class="A">  
+        <div class="title" style="gap:5px;">  
+        <img src="./logo.png" width="15%" height="15% border-radius:2px;">  
+        <h2>MinatsukiTone</h2>   
+         </div>  
+         <p>A Local Music Player Framework | Ver.2.0</p>
+         </div>  
+
+</div> </div>
+</div>
+<div id="main" class="fade-in">
+<!--メインコンテンツをこのdiv内に全て格納します。-->
+
   <main class="container">
     <section class="main">
         
@@ -184,6 +229,7 @@ textarea
 
 
       <div class="sidebar-box">
+
         <p id="translate5">オープンソースライセンス</p>
         <details>
             <p>このWebアプリではBSDライセンスの適用されたライブラリ"jsmediatags"を使用しています。</p>
@@ -216,17 +262,30 @@ textarea
     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 </textarea>
+          <p>This app uses <a href="https://github.com/yokonoha/FSoverride" >FSoverride</a> and <a href="https://github.com/yokonoha/timesysRe">TimeSysRe</a>.</p>
+          <p>FSoverride is licensed under Y.Yokoha A license.</p>
+<p><small>Source codes of this app: <a href="https://github.com/yokonoha/MinatsukiTone">https://github.com/yokonoha/MinatsukiTone</a></small></p>
+        </details>
+      </div>
+      <div class="sidebar-box">
+        <details>
+        <img src="./cd4sharing.png" style="width: 100%; max-width: 400px;"><br>
+        <h3>Credits</h3>
+        <p>MinatsukiTone</p>
+        <p>Developer: <a href="https://yokonoha.github.io">Y.Yokoha</a>(<a href="https://yokonoha.pages.dev">YOKONOHA</a>)</p>
+        <p><small>©2025 Y.Yokoha</small></p>
+        <br>
+        <p id="errs" style="display: none;">If you find any errors in the translation, please let me know! (<a href="mailto:yokochayokoha@duck.com">E-Mail</a>,<a href="https://x.com/yokocha_yokoha">X Account[Recommended]</a>)</p>
+
         </details>
       </div>
       </aside>
   </main>
-      
+ </div>     
   <footer>
   <!--Insert-->
-          <p><small>This page uses <a href="https://github.com/yokonoha/FSoverride" >FSLinear Override</a> and <a href="https://github.com/yokonoha/timesysRe">TimeSysRe</a>.</small></p>
-          <p><small>Source codes: <a href="https://github.com/yokonoha/MinatsukiTone">https://github.com/yokonoha/MinatsukiTone</a></small></p>
-          <p id="errs" style="display: none;">If you find any errors in the translation, please let me know! (<a href="mailto:yokochayokoha@duck.com">E-Mail</a>,<a href="https://x.com/yokocha_yokoha">X Account[Recommended]</a>)</p>
 </footer>
+
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
 <script src="./wdvs.js"></script>
@@ -297,4 +356,5 @@ textarea
     }
 </script>
   <script src="dusd.js"></script>
+  <script src="./spmgr.js"></script>
 </html>
