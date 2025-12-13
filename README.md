@@ -1,4 +1,5 @@
 # 💧MinatsukiTone  
+<img src="./logo.png" style="width:10px;">  
 水无月音乐・水無月音樂
 Minatsuki Tone  Web Music Player - The official successor of CaffeineMusic!   
 https://minatsuki.pages.dev  
