@@ -1,0 +1,26 @@
+{
+  "name": "MinatsukiTone",
+  "short_name": "MinatsukiTone",
+  "start_url": "/",
+  "display": "fullscreen",
+  "background_color": "#0d141a",
+  "theme_color": "#0d141a",
+  "icons": [{
+    "src": "./ic.png",
+    "sizes": "144x144",
+    "type":"img/png",
+    "purpose": "any"
+  },
+    {
+    "src": "./ic.webp",
+    "sizes": "144x144",
+    "purpose": "any"
+  },
+  {
+    "src": "./ic2.png",
+    "sizes": "512x512",
+    "type":"img/png",
+    "purpose": "any"
+  }]
+
+    }

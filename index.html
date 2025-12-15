@@ -11,6 +11,7 @@
   gtag('config', 'G-V90P1XBKB1');
 </script>
   <meta charset="UTF-8">
+  <link rel="manifest" href="manifest.json">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MinatsukiTone</title>
     <meta name="description" content="歌詞表示にも対応!ローカル音楽ファイル再生Webアプリ-MinatsukiToneです。| MinatsukiTone - Supports display of lyrics! A modern web app for playing local music files">
@@ -137,6 +138,53 @@ textarea
             from { opacity: 0; }
             to { opacity: 1; }
         }
+
+
+#ab-overlay {
+position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    
+    background-color: #000;
+    z-index: 2500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1.5s ease;
+    color: #fff;
+}
+
+
+#ab-overlay.active {
+    opacity: 1;         
+    pointer-events: auto; 
+    cursor: pointer;      
+}
+
+
+#ab-overlay img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.1);
+}
+
+#ab-overlay h2 {
+    margin: 10px 0;
+    font-size: 2rem;
+}
+
+#ab-overlay p {
+    margin: 5px 0;
+    color: #ccc;
+}
 </style>
  <body>
       <div id="splash" >
@@ -147,13 +195,13 @@ textarea
         <img src="./logo.png" width="15%" height="15% border-radius:2px;">  
         <h2>MinatsukiTone</h2>   
          </div>  
-         <p>A Local Music Player Framework | Ver.2.0</p>
+         <p>A Local Music Player Framework | Ver.4.0</p>
          </div>  
 
 </div> </div>
 </div>
 <div id="main" class="fade-in">
-<!--メインコンテンツをこのdiv内に全て格納します。-->
+<!--splmgr↑-->
 
   <main class="container">
     <section class="main">
@@ -194,11 +242,26 @@ textarea
     <div style="display: flex;">
         <p>Volume</p><input type="range" id="volume-control" min="0" max="1" step="0.1" value="1" style="width: 100%;">
     </div>
-
+    <div class="marks-container">
+        <div class="marks-r-o" id="repeat-button" style="opacity: 0.6;">Repeat: OFF</div>
+        <div class="marks-r-g" id="shuffle-button" style="opacity: 0.6;">Shuffle: OFF</div>
+        <div class="marks-r-b" id="ab-btn">DisplayMode</div>
+        <div class="marks-r-y" id="fullscreen-btn">Fullscreen</div>
+    </div>
     <audio id="audio-player" style="display:none;"></audio> <!--CORE!-->
 
 <div id="drop-area" class="drop-area">ファイルやフォルダをここにドロップすると再生します。</div>
-      </article>
+<div id="ab-overlay">
+    <div class="ab-content" style="justify-content: center; align-items: center; display: flex; flex-direction: column;">
+        <p style="text-align: left;">▶Now Playing / MinatsukiTone</p>
+        <img id="ab-art-img" src="art.png" alt="Album Art">
+        <h2 id="ab-title-text" style="text-align: center;">Title</h2>
+        <p id="ab-artist-text" style="text-align: center;">Artist</p>
+        <p id="ab-album-text" style="text-align: center;">Album</p>
+        <div id="lyricsDiv2" style="border-color:transparent; align-items: center; text-align: center; justify-content: center; width: 100%; color: #d1e0ff;"></div>
+    </div>
+</div>      
+</article>
 
       <article class="V" style="align-items: center; justify-content: center; text-align: center;">
         <p id="translate6">ファイル選択</p>
@@ -269,7 +332,7 @@ textarea
       </div>
       <div class="sidebar-box">
         <details>
-        <img src="./cd4sharing.png" style="width: 100%; max-width: 400px;"><br>
+        <img src="./cd4sharing.png" style="width: 100%; max-width: 400px;" alt="sharing barcode"><br>
         <h3>Credits</h3>
         <p>MinatsukiTone</p>
         <p>Developer: <a href="https://yokonoha.github.io">Y.Yokoha</a>(<a href="https://yokonoha.pages.dev">YOKONOHA</a>)</p>
@@ -278,6 +341,11 @@ textarea
         <p id="errs" style="display: none;">If you find any errors in the translation, please let me know! (<a href="mailto:yokochayokoha@duck.com">E-Mail</a>,<a href="https://x.com/yokocha_yokoha">X Account[Recommended]</a>)</p>
 
         </details>
+        <br>
+        <br><br>
+        <div class="marks-container">
+        <div class="marks-r-g" id="installpwa-btn">Install as PWA</div>
+        </div>
       </div>
       </aside>
   </main>
@@ -354,6 +422,53 @@ textarea
         document.getElementById("translate7").innerText = "選擇資料夾將建立播放清單。";
                 document.getElementById("errs").style.display="block";
     }
+    //日本(若干の英語表現をローカライズ)
+    else if (userLang.startsWith('ja'))
+    {
+        document.getElementById("ab-btn").innerText="ディスプレイモード";
+        document.getElementById("fullscreen-btn").innerText="全画面表示";
+        document.getElementById("installpwa-btn").innerText="PWAとして端末にインストール";
+    }
+
+    document.getElementById("installpwa-btn").addEventListener("click",function(){
+        installPWA();
+    });
+    let deferredPrompt = null;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    console.log('beforeinstallprompt fired');
+});
+
+    function installPWA(){
+        if(deferredPrompt){
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult)=>{
+                if(choiceResult.outcome==="accepted"){
+                    console.log("PWAインストールがユーザーにより許可されました。");
+                }else{
+                    console.log("PWAインストールがユーザーにより拒否されました。");
+                }
+                deferredPrompt=null;
+            });
+        }
+    }
+
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('./service-worker.js').then(function(registration) {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          }, function(err) {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+        });
+      }
+
+      if(navigator.standalone || window.matchMedia('(display-mode: standalone)').matches){
+        console.log("PWAモードで動作しています。");
+        document.getElementById("installpwa-btn").style.display="none";
+        }
 </script>
   <script src="dusd.js"></script>
   <script src="./spmgr.js"></script>

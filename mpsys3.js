@@ -12,16 +12,28 @@ const artistPlaceholder = document.getElementById('artist');
 const albumPlaceholder = document.getElementById('album');
 const albumArtPlaceholder = document.getElementById('album-art');
 const lyricsDiv = document.getElementById('lyricsDiv');
+const lyricsDiv2 = document.getElementById('lyricsDiv2');
 const playlistDiv = document.getElementById('playlist');
 const spdcon = document.getElementById("spd");
 const previousButton = document.getElementById('prev-button');
 const nextButton = document.getElementById('next-button');
 const vcon = document.getElementById('volume-control');
+const repeatButton = document.getElementById('repeat-button');
+const shuffleButton = document.getElementById('shuffle-button'); 
+const abBtn = document.getElementById('ab-btn');
+const abOverlay = document.getElementById('ab-overlay');
+const abArt = document.getElementById('ab-art-img');
+const abTitle = document.getElementById('ab-title-text');
+const abArtist = document.getElementById('ab-artist-text');
+const abAlbum = document.getElementById('ab-album-text');
+const fullscbtn = document.getElementById('fullscreen-btn');
 
 let playlist = [];
 let currentIndex = 0;
 let isPlaying = false;
 let lrcmap = new Map();
+let isRepeat = false;
+let isShuffle = false;
 
 fileInput.addEventListener("change", () => handleSelectedFiles(fileInput.files));
 folderInput.addEventListener("change", () => handleSelectedFiles(folderInput.files));
@@ -264,13 +276,16 @@ function displayMetadata(tags) {
     artistPlaceholder.textContent = artist || "アーティスト不明";
     albumPlaceholder.textContent = album || "アルバム不明";
 
+let imageUrl = "art.png";
     if (picture) {
         const base64String = btoa(new Uint8Array(picture.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
-        albumArtPlaceholder.src = `data:${picture.format};base64,${base64String}`;
-    } else {
-        albumArtPlaceholder.src = "art.png";
+        imageUrl = `data:${picture.format};base64,${base64String}`;
     }
-
+    albumArtPlaceholder.src = imageUrl;
+    abTitle.textContent = title || "タイトル不明";
+    abArtist.textContent = artist || "アーティスト不明";
+    abAlbum.textContent = album || "アルバム不明";
+    abArt.src = imageUrl;
     updateBackground(picture);
     initsys();
 }
@@ -331,7 +346,12 @@ function mktime(sec) {
 }
 
 audioPlayer.addEventListener('ended', () => {
-    playNext();
+    if (isRepeat) {
+        audioPlayer.currentTime = 0;
+        audioPlayer.play();
+    } else {
+        playNext();
+    }
 });
 
 previousButton.addEventListener('click', () => {
@@ -343,7 +363,15 @@ nextButton.addEventListener('click', () => {
 });
 
 function playNext() {
-    currentIndex = (currentIndex + 1) % playlist.length;
+    if (isShuffle && playlist.length > 1) {
+        let nextIndex;
+        do {
+            nextIndex = Math.floor(Math.random() * playlist.length);
+        } while (nextIndex === currentIndex);
+        currentIndex = nextIndex;
+    } else {
+        currentIndex = (currentIndex + 1) % playlist.length;
+    }
     loadAudio(playlist[currentIndex]);
 }
 
@@ -398,3 +426,41 @@ function updateBackground(picture) {
         body.style.backgroundAttachment = '';
     }
 }
+
+repeatButton.addEventListener('click', toggleRepeat);
+shuffleButton.addEventListener('click', toggleShuffle);
+
+function toggleRepeat() {
+    isRepeat = !isRepeat;
+
+    repeatButton.textContent = isRepeat ? 'Repaet: ON' : 'Repeat: OFF';
+    repeatButton.style.opacity = isRepeat ? '1.0' : '0.6'; 
+}
+
+function toggleShuffle() {
+    isShuffle = !isShuffle;
+    shuffleButton.textContent = isShuffle ? 'Shuffle: ON' : 'Shuffle: OFF';
+    shuffleButton.style.opacity = isShuffle ? '1.0' : '0.6';
+}
+
+abBtn.addEventListener('click', () => {
+    abOverlay.classList.add('active');
+    window.scrollTo(0, 0);
+    document.body.style.overflow = 'hidden';
+    document.documentElement.requestFullscreen().catch(e => console.log(e));
+});
+
+
+abOverlay.addEventListener('click', () => {
+    abOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+    if (document.fullscreenElement) document.exitFullscreen();
+});
+
+fullscbtn.addEventListener('click', () => {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(e => console.log(e));
+    } else {
+        document.exitFullscreen();
+    }
+});
