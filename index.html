@@ -343,7 +343,7 @@ position: fixed;
         </details>
         <br>
         <br><br>
-        <div class="marks-container">
+        <div class="marks-container" id="wanna-remove">
         <div class="marks-r-g" id="installpwa-btn">Install as PWA</div>
         
         </div><button id="dismiss">↑Dismiss this Tips</button>
@@ -473,11 +473,13 @@ window.addEventListener('beforeinstallprompt', (e) => {
         }
         
         document.getElementById("dismiss").addEventListener("click",function(){
-            document.querySelector(".sidebar-box:last-child").style.display="none";
+            document.getElementById("wanna-remove").style.display="none";
+            document.getElementById("dismiss").style.display="none";
             localStorage.setItem("dismissTips","true");
         });
         if(localStorage.getItem("dismissTips")==="true"){
-            document.querySelector(".sidebar-box:last-child").style.display="none";
+            document.getElementById("wanna-remove").style.display="none";
+            document.getElementById("dismiss").style.display="none";
         }
 </script>
   <script src="dusd.js"></script>
