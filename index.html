@@ -345,7 +345,8 @@ position: fixed;
         <br><br>
         <div class="marks-container">
         <div class="marks-r-g" id="installpwa-btn">Install as PWA</div>
-        </div>
+        
+        </div><button id="dismiss">↑Dismiss this Tips</button>
       </div>
       </aside>
   </main>
@@ -428,6 +429,7 @@ position: fixed;
         document.getElementById("ab-btn").innerText="ディスプレイモード";
         document.getElementById("fullscreen-btn").innerText="全画面表示";
         document.getElementById("installpwa-btn").innerText="PWAとして端末にインストール";
+        document.getElementById("dismiss").innerText="↑今後このTipsを表示しない";
     }
 
     document.getElementById("installpwa-btn").addEventListener("click",function(){
@@ -468,6 +470,14 @@ window.addEventListener('beforeinstallprompt', (e) => {
       if(navigator.standalone || window.matchMedia('(display-mode: standalone)').matches){
         console.log("PWAモードで動作しています。");
         document.getElementById("installpwa-btn").style.display="none";
+        }
+        
+        document.getElementById("dismiss").addEventListener("click",function(){
+            document.querySelector(".sidebar-box:last-child").style.display="none";
+            localStorage.setItem("dismissTips","true");
+        });
+        if(localStorage.getItem("dismissTips")==="true"){
+            document.querySelector(".sidebar-box:last-child").style.display="none";
         }
 </script>
   <script src="dusd.js"></script>
