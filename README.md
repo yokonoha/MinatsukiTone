@@ -8,6 +8,8 @@ https://minatsuki.pages.dev
 
 <img width="1623" height="847" alt="image" src="https://github.com/user-attachments/assets/3957bf19-5272-4070-bc90-d3d79aad0030" />
 
+<a href="https://yokonoha.pages.dev/articles/minatsukiringo">警告メッセージが表示された場合はこちらをご参照ください(About warning messages)</a>  
+
 MinatsukiToneは、歌詞表示対応のWebアプリです。  
 CaffeineMusicとほぼ同じですが、画面サイズ追従精度の強化、歌詞表示対応化、操作感の向上させる仕組みを備えています!  
 ブラウザによって対応する音楽ファイル形式は異なりますが、一般的なブラウザはmp3, m4a, flac に対応しています。  
