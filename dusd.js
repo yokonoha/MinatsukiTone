@@ -61,9 +61,9 @@ else if (ua.includes(restricteddevice2)||ua.includes(altrestricteddevice2))
         let title=document.createElement("h3");
         title.innerHTML="お使いの端末における制約ついて/About restrictions of your device";
         let warntext1=document.createElement("p");
-        warntext1.innerHTML="お使いのデバイス(ブラウザー)は機能が制約されているため、ファイルやフォルダを読み込む際は、ファイルアプリからドラッグアンドドロップで読み込む必要があります。詳しくはこのアプリ下部にあるリポジトリリンクからご覧ください。";
+        warntext1.innerHTML="お使いのデバイス(ブラウザー)は機能が制約されているため、ファイルやフォルダを読み込む際は、ファイルアプリからドラッグアンドドロップで読み込む必要があります。詳しくはこのアプリ詳細欄にあるリポジトリリンクまたはコチラ(https://yokonoha.pages.dev/articles/minatsukiringo)からご覧ください。";
         let warntext2=document.createElement("p");
-        warntext2.innerHTML="Your device (browser) has limited functionality, so when loading files and folders, you need to load them by drag-and-drop from the file app. For more information, please see the repository link at the bottom of this app.";
+        warntext2.innerHTML="Your device (browser) has limited functionality, so when loading files and folders, you need to load them by drag-and-drop from the file app. For more information, please see the repository link at the descriptions box of this app.";
         let dontshowmeanymore=document.createElement("button");
         dontshowmeanymore.setAttribute("onclick","remember()");
         dontshowmeanymore.innerHTML="今後表示しない/Do not show in the future";
@@ -132,4 +132,5 @@ function remember2()
 {
     localStorage.setItem("dusdw003","1");
     document.getElementById("warnboxclose").style.display="none";
+
 }
