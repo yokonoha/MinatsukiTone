@@ -1,8 +1,8 @@
 # 💧MinatsukiTone  
 <img src="./logo.png" style="width:10vw;">  
-水无月音乐・水無月音樂
-Minatsuki Tone  Web Music Player - The official successor of CaffeineMusic!   
-https://minatsuki.pages.dev  
+MinatsukiTone・水无月音乐・水無月音樂
+MinatsukiTone A lightweight Web Music Player   
+Service link: https://minatsuki.pages.dev  
 
 🌐 Supported languages: JP(日本語 Default) | EN | CN (簡体字・繁体字)  
 
@@ -28,7 +28,7 @@ On devices displaying this warning, some or all features may be unavailable.
 
 ## なぜ MinazukiでもMinadukiでもなく、Minatsuki?  
 そのままだとなんだか味気ないので、少しもじってみました!  
-名前の由来は下の英文をご参照ください。(日本語じゃなくてごめんなさい!)  
+名前の由来は下の英文をご参照ください。  
 
 ##  About the Concept and Name: MinatsukiTone  
 
@@ -49,15 +49,15 @@ These kanji are the foundation of my design's colors:
 1.  **Water (水):** This character is represented by **Mizuiro (水色), or "Water Blue,"** which serves as the bright, primary theme color for the UI.
 2.  **Moon (月):** This connection inspires the use of a **deep, subdued black** (or "Night Shade"). This hue evokes the **night sky gently illuminated by the moonlight**, providing necessary depth and a beautiful contrast to the Water Blue.  
 
-These two core colors—Water Blue and Night Shade Black—define the unique visual identity of the MinatsukiTone user interface.  
+These two core colors—Water Blue and Night Shade Black—define the unique visual of the MinatsukiTone user interface.  
 
 ## 依存関係/Dependency  
 JP: このWebアプリケーションではBSDライセンスの適用されたコンポーネント「jsmediatags」を使用させていただいています。  
-権利表記やBSDライセンス条文に関してはメインの画面の下部に記載していますが、このファイルの下部にも記載しておきました。ホントに素晴らしいjsライブラリをありがとうございます!!  
+便利なjsライブラリをありがとうございます!  
 リンク: https://github.com/aadsm/jsmediatags  
 
 EN: This web application uses the BSD licensed component “jsmediatags”.  
-The rights notice and BSD license is listed at the bottom of the main screen, and I have also included them in this page and NOTICE file. Thank you for the great and splendid js library!  
+The rights notice and BSD license is listed at the bottom of the main screen, and I have also included them in this page and NOTICE file.    
 Link: https://github.com/aadsm/jsmediatags  
 
 ## スタイルシート(CSS)について/About this stylesheet(CSS)  
@@ -67,19 +67,16 @@ EN:  The style sheet for this application uses FSoverride created by Y.Yokoha.
 ## ウィジェット(TimeSysRe)について/About the clock widget(TimeSysRe)  
 TimeSysRe by Y.Yokoha  
 https://github.com/yokonoha/timesysRe  
+License:None(Free)  
 
 ## 製作者情報/Authors  
-JP: 製作: 横茶横葉  
-    管理: 横茶横葉(Project YOKONOHA)  
+JP: 製作: 横茶横葉    
     デバッグ: 横茶横葉,Mikan  
-©2025 Project YOKONOHA  
-©2025 横茶横葉  
+©2025-2026 横茶横葉  
 
 EN: Creator: Y.Yokoha  
-Management: Project YOKONOHA  
 Debug Assist: Mikan  
 Debug: Y.Yokoha  
-©2025 Project YOKONOHA  
 ©2025 Y.Yokoha  
 
 jsmediatags(BSD License)  
