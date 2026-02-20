@@ -13,7 +13,7 @@
   <meta charset="UTF-8">
   <link rel="manifest" href="manifest.json">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MinatsukiTone</title>
+  <title>MinatsukiTone - A lightweight web music player</title>
     <meta name="description" content="歌詞表示にも対応!ローカル音楽ファイル再生Webアプリ-MinatsukiToneです。| MinatsukiTone - Supports display of lyrics! A modern web app for playing local music files">
     <meta name="keywords" content="Minatsuki, 水無月,Minazuki,MinatsukiTone,MinazukiTone,CaffeineMusic,CaffeineMusic2,Y.Yokoha,YokochaYokoha,横茶横葉">
     <link rel="stylesheet" href="fsoverride.css">
@@ -195,7 +195,7 @@ position: fixed;
         <img src="./logo.png" width="15%" height="15% border-radius:2px;">  
         <h2>MinatsukiTone</h2>   
          </div>  
-         <p>A Local Music Player Framework | Ver.4.1</p>
+         <p>A Local Music Player Framework | Ver.4.2</p>
          </div>  
 
 </div> </div>
@@ -208,7 +208,7 @@ position: fixed;
         
         <article class="Q" id="mediaq"><div class="que">
     <div id="aaholder" style="display: flex; justify-content: center; align-items: center;">
-    <img id="album-art" src="./art.png" alt="Album art">
+    <img id="album-art" src="./art.png" alt="Album art" draggable="false" style="-webkit-user-drag: none; user-drag: none;>
     
 </div>
     <div id="mediaq2" style="text-align: center;">
@@ -228,9 +228,9 @@ position: fixed;
     <p id="time1">0:00</p>
     </div>
 <div class="G" style="align-items: center; justify-content: center; display: flex;">
-    <img src="prev.png" class="btn" id="prev-button" alt="前の曲">
-    <img src="play.png" class="btn" id="play-pause-button" alt="再生/一時停止">
-    <img src="next.png" class="btn" id="next-button" alt="次の曲"> 
+    <img src="prev.png" class="btn" id="prev-button" alt="前の曲" draggable="false" style="-webkit-user-drag: none; user-drag: none;">
+    <img src="play.png" class="btn" id="play-pause-button" alt="再生/一時停止" draggable="false" style="-webkit-user-drag: none; user-drag: none;">
+    <img src="next.png" class="btn" id="next-button" alt="次の曲" draggable="false" style="-webkit-user-drag: none; user-drag: none;"> 
 </div>
 </div>
 
@@ -254,7 +254,7 @@ position: fixed;
 <div id="ab-overlay">
     <div class="ab-content" style="justify-content: center; align-items: center; display: flex; flex-direction: column;">
         <p style="text-align: left;">▶Now Playing / MinatsukiTone</p>
-        <img id="ab-art-img" src="art.png" alt="Album Art">
+        <img id="ab-art-img" src="art.png" alt="Album Art" draggable="false" style="-webkit-user-drag: none; user-drag: none;>
         <h2 id="ab-title-text" style="text-align: center;">Title</h2>
         <p id="ab-artist-text" style="text-align: center;">Artist</p>
         <p id="ab-album-text" style="text-align: center;">Album</p>
@@ -332,7 +332,7 @@ position: fixed;
       </div>
       <div class="sidebar-box">
         <details>
-        <img src="./cd4sharing.png" style="width: 100%; max-width: 400px;" alt="sharing barcode"><br>
+        <img src="./cd4sharing.png" style="width: 100%; max-width: 400px;" alt="sharing barcode" draggable="false" style="-webkit-user-drag: none; user-drag: none;><br>
         <h3>Credits</h3>
         <p>MinatsukiTone</p>
         <p>Developer: <a href="https://yokonoha.github.io" target="_blank">Y.Yokoha</a></p>
