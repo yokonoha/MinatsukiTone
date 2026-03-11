@@ -78,13 +78,12 @@ License:None(Free)
 
 ## 製作者情報/Authors  
 JP: 製作: 横茶横葉    
-    デバッグ: 横茶横葉,Mikan  
+協力: Mikan  
 ©2025-2026 横茶横葉  
 
 EN: Creator: Y.Yokoha  
-Debug Assist: Mikan  
-Debug: Y.Yokoha  
-©2025 Y.Yokoha  
+ Assist: Mikan   
+©2025-2026 Y.Yokoha  
 
 jsmediatags(BSD License)  
 <a href="https://github.com/aadsm/jsmediatags">https://github.com/aadsm/jsmediatags</a>  
