@@ -38,6 +38,10 @@ TimeSysRe by Y.Yokoha
 https://github.com/yokonoha/timesysRe  
 License:None(Free)  
 
+spmgr.js(Splash Manager Script for Caffeine Family CSS env) by Y.Yokoha  
+https://github.com/yokonoha/splash_manager  
+License:MIT License  
+
 ## 依存関係/Dependency  
 JP: このWebアプリケーションではBSDライセンスの適用されたコンポーネント「jsmediatags」を使用させていただいています。  
 便利なjsライブラリをありがとうございます!  
