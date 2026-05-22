@@ -433,7 +433,7 @@ shuffleButton.addEventListener('click', toggleShuffle);
 function toggleRepeat() {
     isRepeat = !isRepeat;
 
-    repeatButton.textContent = isRepeat ? 'Repaet: ON' : 'Repeat: OFF';
+    repeatButton.textContent = isRepeat ? 'Repeat: ON' : 'Repeat: OFF';
     repeatButton.style.opacity = isRepeat ? '1.0' : '0.6'; 
 }
 

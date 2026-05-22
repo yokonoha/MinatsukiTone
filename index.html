@@ -195,7 +195,7 @@ position: fixed;
         <img src="./logo.png" width="15%" height="15% border-radius:2px;">  
         <h2>MinatsukiTone</h2>   
          </div>  
-         <p>A Local Music Player Framework | Ver.4.5</p>
+         <p>A Local Music Player Framework | Ver.4.8</p>
          </div>  
 
 </div> </div>
@@ -285,9 +285,11 @@ position: fixed;
       <div class="sidebar-box">
        <p id="translate3">プレイリスト</p>
     <p><small id="translate4">クリックまたはタップすると再生します。</small></p>
-    <div id="playlist">
 
-    </div>
+    <div id="playlist" style="max-height: 60vh; overflow-y: scroll;">
+
+    </div>   
+    <div class="marks-container"><div class="marks-r-g" id="removeoverflow">↓↑</div></div>
       </div>
 
 
@@ -361,6 +363,7 @@ position: fixed;
 <script src="./mpsys3.js"></script>
 <script src="./timesysre.js"></script>
 <script>
+    const expandBtn = document.getElementById('removeoverflow');
     //日本語部分を英語・簡体・繁体に翻訳
     const userLang = navigator.language || navigator.userLanguage;
     if(userLang.startsWith('en'))
@@ -376,6 +379,7 @@ position: fixed;
         document.getElementById('translate5').innerText = "Open Source Licenses";
         document.getElementById("translate6").innerText = "File Selection";
         document.getElementById("translate7").innerText = "Selecting a folder will create a playlist.";
+        expandBtn.textContent = 'Expand';
         document.getElementById("errs").style.display="block";
     }
     else if(userLang.startsWith('zh-CN'))
@@ -391,6 +395,7 @@ position: fixed;
         document.getElementById('translate5').innerText = "开源许可证";
         document.getElementById("translate6").innerText = "文件选择";
         document.getElementById("translate7").innerText = "选择文件夹将创建播放列表。";
+        expandBtn.textContent = '展开';
                 document.getElementById("errs").style.display="block";
     }
         else if(userLang.startsWith('zh-Hans'))
@@ -406,6 +411,7 @@ position: fixed;
         document.getElementById('translate5').innerText = "开源许可证";
         document.getElementById("translate6").innerText = "文件选择";
         document.getElementById("translate7").innerText = "选择文件夹将创建播放列表。";
+        expandBtn.textContent = '展开'; 
                 document.getElementById("errs").style.display="block";
     }
     else if(userLang.startsWith('zh-TW'))
@@ -421,6 +427,7 @@ position: fixed;
         document.getElementById('translate5').innerText = "開放原始碼授權";
         document.getElementById("translate6").innerText = "檔案選擇";
         document.getElementById("translate7").innerText = "選擇資料夾將建立播放清單。";
+        expandBtn.textContent = '展开';
                 document.getElementById("errs").style.display="block";
     }
     //日本(若干の英語表現をローカライズ)
@@ -430,6 +437,7 @@ position: fixed;
         document.getElementById("fullscreen-btn").innerText="全画面表示";
         document.getElementById("installpwa-btn").innerText="PWAとして端末にインストール";
         document.getElementById("dismiss").innerText="↑今後このTipsを表示しない";
+        expandBtn.textContent = 'パネルを展開';
     }
 
     document.getElementById("installpwa-btn").addEventListener("click",function(){
@@ -481,6 +489,52 @@ window.addEventListener('beforeinstallprompt', (e) => {
             document.getElementById("wanna-remove").style.display="none";
             document.getElementById("dismiss").style.display="none";
         }
+
+        
+         const playlistContainer = document.getElementById('playlist');
+        expandBtn.addEventListener('click', () => {
+    console.log("Expand button clicked");
+   
+    if (playlistContainer.style.maxHeight == '60vh'|| playlistContainer.style.overflowY === 'scroll') {
+        playlistContainer.style.maxHeight = 'none';
+        playlistContainer.style.overflowY = 'visible';
+        if(userLang.startsWith('en'))
+        {
+            expandBtn.textContent = 'Collapse';
+        }
+        else if(userLang.startsWith('zh-CN') || userLang.startsWith('zh-Hans'))
+        {
+            expandBtn.textContent = '收起';
+        }
+                else if(userLang.startsWith('zh-TW') || userLang.startsWith('zh-Hant'))
+        {
+            expandBtn.textContent = '折叠';
+        }
+         else if (userLang.startsWith('ja'))
+        {
+            expandBtn.textContent = 'パネルを最小化';
+        }
+    } else {
+        playlistContainer.style.maxHeight = '60vh';
+        playlistContainer.style.overflowY = 'scroll';
+        if(userLang.startsWith('en'))
+        {
+            expandBtn.textContent = 'Expand';
+        }
+        else if(userLang.startsWith('zh-CN') || userLang.startsWith('zh-Hans'))
+        {
+            expandBtn.textContent = '展开';
+        }
+                else if(userLang.startsWith('zh-TW') || userLang.startsWith('zh-Hant'))
+        {
+            expandBtn.textContent = '展開';
+        }
+         else if (userLang.startsWith('ja'))
+        {
+            expandBtn.textContent = 'パネルを展開';
+        }
+    }
+});
 </script>
   <script src="dusd.js"></script>
   <script src="./spmgr.js"></script>
