@@ -27,6 +27,7 @@ const abTitle = document.getElementById('ab-title-text');
 const abArtist = document.getElementById('ab-artist-text');
 const abAlbum = document.getElementById('ab-album-text');
 const fullscbtn = document.getElementById('fullscreen-btn');
+const debugConsole = document.getElementById('consolemetadata');
 
 let playlist = [];
 let currentIndex = 0;
@@ -34,6 +35,8 @@ let isPlaying = false;
 let lrcmap = new Map();
 let isRepeat = false;
 let isShuffle = false;
+let shuffleHistory = [];
+let shuffleHistoryIndex = -1;
 
 fileInput.addEventListener("change", () => handleSelectedFiles(fileInput.files));
 folderInput.addEventListener("change", () => handleSelectedFiles(folderInput.files));
@@ -75,6 +78,7 @@ async function handleSelectedFiles(files) {
 
     if (playlist.length > 0) {
         currentIndex = 0;
+        resetShuffleHistory();
         updateplaylistDSP();
         loadAudio(playlist[currentIndex]);
     }
@@ -93,6 +97,7 @@ async function processtask(items) {
     }
     if (playlist.length > 0) {
         currentIndex = 0;
+        resetShuffleHistory();
         updateplaylistDSP();
         loadAudio(playlist[currentIndex]);
     }
@@ -243,9 +248,12 @@ async function loadAudio(file) {
         
         lyricsDiv.innerHTML = "";
     }
-    console.log("メタデータ全体:", tags);
-
 }
+
+    console.log("メタデータ全体:", tags);
+    const debugTags = { ...tags };
+    delete debugTags.picture;
+    debugConsole.textContent = JSON.stringify(debugTags, null, 2).replace("{", "").replace("}", "").replace(/"/g, '');
     
     displayMetadata(tags);
     
@@ -299,6 +307,13 @@ function updateplaylistDSP() {
         item.innerHTML = `<img src="music.png" alt="曲" style="width:20px;"><p><span>${file.name}</span></p>`;
         item.addEventListener('click', () => {
             currentIndex = index;
+            if (isShuffle) {
+                shuffleHistory = shuffleHistory.slice(0, shuffleHistoryIndex + 1);
+                if (shuffleHistory[shuffleHistory.length - 1] !== index) {
+                    shuffleHistory.push(index);
+                }
+                shuffleHistoryIndex = shuffleHistory.length - 1;
+            }
             loadAudio(file);
         });
         playlistDiv.appendChild(item);
@@ -363,12 +378,30 @@ nextButton.addEventListener('click', () => {
 });
 
 function playNext() {
+    if (playlist.length === 0) return;
+
     if (isShuffle && playlist.length > 1) {
-        let nextIndex;
-        do {
-            nextIndex = Math.floor(Math.random() * playlist.length);
-        } while (nextIndex === currentIndex);
-        currentIndex = nextIndex;
+        if (shuffleHistoryIndex < shuffleHistory.length - 1) {
+            shuffleHistoryIndex++;
+            currentIndex = shuffleHistory[shuffleHistoryIndex];
+        } else {
+            const played = new Set(shuffleHistory);
+            let candidates = playlist
+                .map((_, index) => index)
+                .filter(index => !played.has(index));
+
+            if (candidates.length === 0) {
+                shuffleHistory = [currentIndex];
+                shuffleHistoryIndex = 0;
+                candidates = playlist
+                    .map((_, index) => index)
+                    .filter(index => index !== currentIndex);
+            }
+
+            currentIndex = candidates[Math.floor(Math.random() * candidates.length)];
+            shuffleHistory.push(currentIndex);
+            shuffleHistoryIndex++;
+        }
     } else {
         currentIndex = (currentIndex + 1) % playlist.length;
     }
@@ -376,8 +409,20 @@ function playNext() {
 }
 
 function playPrevious() {
-    currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
+    if (playlist.length === 0) return;
+
+    if (isShuffle && shuffleHistoryIndex > 0) {
+        shuffleHistoryIndex--;
+        currentIndex = shuffleHistory[shuffleHistoryIndex];
+    } else {
+        currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
+    }
     loadAudio(playlist[currentIndex]);
+}
+
+function resetShuffleHistory() {
+    shuffleHistory = playlist.length > 0 ? [currentIndex] : [];
+    shuffleHistoryIndex = playlist.length > 0 ? 0 : -1;
 }
 
 
@@ -439,6 +484,7 @@ function toggleRepeat() {
 
 function toggleShuffle() {
     isShuffle = !isShuffle;
+    resetShuffleHistory();
     shuffleButton.textContent = isShuffle ? 'Shuffle: ON' : 'Shuffle: OFF';
     shuffleButton.style.opacity = isShuffle ? '1.0' : '0.6';
 }
