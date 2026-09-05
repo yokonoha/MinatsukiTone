@@ -188,6 +188,9 @@ position: fixed;
     margin: 5px 0;
     color: #ccc;
 }
+#lrc2{
+    white-space:pre-line;
+}
 </style>
  <body>
       <div id="splash" >
@@ -198,7 +201,7 @@ position: fixed;
         <img src="./logo.png" width="15%" height="15% border-radius:2px;">  
         <h2>MinatsukiTone</h2>   
          </div>  
-         <p>A Local Music Player Framework | Ver.5.0</p>
+         <p>A Local Music Player Framework | Ver.6.0</p>
          </div>  
 
 </div> </div>
@@ -211,14 +214,17 @@ position: fixed;
         
         <article class="Q" id="mediaq"><div class="que">
     <div id="aaholder" style="display: flex; justify-content: center; align-items: center;">
-    <img id="album-art" src="./art.png" alt="Album art" draggable="false" style="-webkit-user-drag: none; user-drag: none;">
+    <img id="album-art" src="./art.png" alt="Album art" draggable="false" style="-webkit-user-drag: none; user-select: none;">
     
 </div>
     <div id="mediaq2" style="text-align: center;">
-        <div style="display: block;">
+        <div id="infodsp" style="display: block;">
     <h2 id="title">MinatsukiTone</h2>
     <p id="artist">ファイルを読み込むと</p>
     <p id="album">再生します</p>
+</div>
+<div id="lrcdsp" style="display: none; overflow-y: scroll; max-height: 270px;">
+    <p id="lrc2">Preparing...</p>
 </div>
 </div>
 </div>
@@ -231,10 +237,14 @@ position: fixed;
     <p id="time1">0:00</p>
     </div>
 <div class="G" style="align-items: center; justify-content: center; display: flex;">
-    <img src="prev.png" class="btn" id="prev-button" alt="前の曲" draggable="false" style="-webkit-user-drag: none; user-drag: none;">
-    <img src="play.png" class="btn" id="play-pause-button" alt="再生/一時停止" draggable="false" style="-webkit-user-drag: none; user-drag: none;">
-    <img src="next.png" class="btn" id="next-button" alt="次の曲" draggable="false" style="-webkit-user-drag: none; user-drag: none;"> 
+    <img src="prev.png" class="btn" id="prev-button" alt="前の曲" draggable="false" style="-webkit-user-drag: none; user-select: none;">
+    <img src="play.png" class="btn" id="play-pause-button" alt="再生/一時停止" draggable="false" style="-webkit-user-drag: none; user-select: none;">
+    <img src="next.png" class="btn" id="next-button" alt="次の曲" draggable="false" style="-webkit-user-drag: none; user-select: none;"> 
+    <div style="padding-left: 20px; display: none;" id="vcavailable">
+<img src="vcdsp.png" id="vcdsp" alt="歌詞表示切替" draggable="false" style="-webkit-user-drag: none; user-select: none;width: 50px;border-radius: 8px;"> 
 </div>
+</div>
+
 </div>
 
       </article>
@@ -257,7 +267,7 @@ position: fixed;
 <div id="ab-overlay">
     <div class="ab-content" style="justify-content: center; align-items: center; display: flex; flex-direction: column;">
         <p style="text-align: left;">▶Now Playing / MinatsukiTone</p>
-        <img id="ab-art-img" src="art.png" alt="Album Art" draggable="false" style="-webkit-user-drag: none; user-drag: none;">
+        <img id="ab-art-img" src="art.png" alt="Album Art" draggable="false" style="-webkit-user-drag: none; user-select: none;">
         <h2 id="ab-title-text" style="text-align: center;">Title</h2>
         <p id="ab-artist-text" style="text-align: center;">Artist</p>
         <p id="ab-album-text" style="text-align: center;">Album</p>
@@ -343,7 +353,7 @@ position: fixed;
         </details>
         <details>
             <summary>Credits</summary>
-        <img src="./cd4sharing.png" style="width: 100%; max-width: 400px;" alt="sharing barcode" draggable="false" style="-webkit-user-drag: none; user-drag: none;"><br>
+        <img src="./cd4sharing.png" style="width: 100%; max-width: 400px;" alt="sharing barcode" draggable="false" style="-webkit-user-drag: none; user-select: none;"><br>
         <h3>Credits</h3>
         <p>MinatsukiTone</p>
         <p>Developer: <a href="https://yokonoha.github.io" target="_blank">Y.Yokoha</a></p>
@@ -547,4 +557,5 @@ window.addEventListener('beforeinstallprompt', (e) => {
 </script>
   <script src="dusd.js"></script>
   <script src="./spmgr.js"></script>
+  <script src="./ykhfi.js"></script>
 </html>

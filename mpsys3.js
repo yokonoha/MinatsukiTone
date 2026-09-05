@@ -28,6 +28,12 @@ const abArtist = document.getElementById('ab-artist-text');
 const abAlbum = document.getElementById('ab-album-text');
 const fullscbtn = document.getElementById('fullscreen-btn');
 const debugConsole = document.getElementById('consolemetadata');
+//append to use YKH_FI
+const vorbislrcdsp = document.getElementById("lrc2");
+const vorbislrcviewchgbtn = document.getElementById("vcdsp");
+const vorbislrcviewchgbtnDiv = document.getElementById("vcavailable");
+const normalDsp =document.getElementById("infodsp");
+const lrc2Dsp =document.getElementById("lrcdsp");
 
 let playlist = [];
 let currentIndex = 0;
@@ -37,6 +43,7 @@ let isRepeat = false;
 let isShuffle = false;
 let shuffleHistory = [];
 let shuffleHistoryIndex = -1;
+let alreadyfoundvorbis=false;
 
 fileInput.addEventListener("change", () => handleSelectedFiles(fileInput.files));
 folderInput.addEventListener("change", () => handleSelectedFiles(folderInput.files));
@@ -227,7 +234,23 @@ async function loadAudio(file) {
     audioPlayer.load();
 
     const tags = await getMetadata(file);
-
+    //FLACの歌詞を取得するBRIDGE
+    const flctgs=await getfMetadata(file);
+    //console.log("VORBIS_COMMENTメタデータ:", flctgs);
+    vorbislrcdsp.textContent=flctgs.LYRICS?.[0] ?? "";
+    if(flctgs.LYRICS?.[0])
+    {
+        vorbislrcviewchgbtnDiv.style.display="block";
+        alreadyfoundvorbis=true;
+    }
+    else
+    {
+        vorbislrcviewchgbtnDiv.style.display="none";
+        normalDsp.style.display="block";
+        lrc2Dsp.style.display="none";
+        vorbislrcdsp.textContent="";
+        alreadyfoundvorbis=false;
+    }
     const songName = file.name.replace(/\.[^/.]+$/, "");
     if (lrcmap.has(songName)) {
         displayLyrics(lrcmap.get(songName));
@@ -243,9 +266,19 @@ async function loadAudio(file) {
     }
 
     if (embeddedLyrics) {
-        displayLyrics(parseLyrics(embeddedLyrics));
+        vorbislrcdsp.textContent=embeddedLyrics;
+        vorbislrcviewchgbtnDiv.style.display="block";
+        //displayLyrics(parseLyrics(embeddedLyrics));
     } else {
-        
+        //YKHFIでも見つからなかった際に存在するときの。
+        if(!alreadyfoundvorbis)
+        {
+            console.log("[mpsys3] Vorbis Comment not found, but ID3 is present.Displaying..");
+            vorbislrcdsp.textContent="";
+            vorbislrcviewchgbtnDiv.style.display="none";
+            normalDsp.style.display="block";
+            lrc2Dsp.style.display="none";
+        }
         lyricsDiv.innerHTML = "";
     }
 }
@@ -509,4 +542,17 @@ fullscbtn.addEventListener('click', () => {
     } else {
         document.exitFullscreen();
     }
+});
+
+vorbislrcviewchgbtn.addEventListener("click",()=>{
+if(normalDsp.style.display=="block")
+{
+    normalDsp.style.display="none";
+    lrc2Dsp.style.display="block";
+}
+else
+{
+    normalDsp.style.display="block";
+    lrc2Dsp.style.display="none";
+}
 });
