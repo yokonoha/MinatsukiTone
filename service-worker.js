@@ -1,5 +1,5 @@
 
-const ichjihozon = 'v6.0';//更新時変更
+const ichjihozon = 'v6.1';//更新時変更
 const hozonfiles = [
     './',
     './index.html',
