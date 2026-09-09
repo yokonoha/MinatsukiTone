@@ -212,9 +212,9 @@ position: fixed;
   <main class="container">
     <section class="main">
         
-        <article class="Q" id="mediaq"><div class="que">
-    <div id="aaholder" style="display: flex; justify-content: center; align-items: center;">
-    <img id="album-art" src="./art.png" alt="Album art" draggable="false" style="-webkit-user-drag: none; user-select: none;">
+        <div class="Q" id="mediaq"><div class="que">
+    <div id="aaholder" style="display: flex; justify-content: center; align-items: center;max-width: 500px;">
+    <img id="album-art" src="./art.png" alt="Album art" draggable="false" style="-webkit-user-drag: none; user-select: none;max-width: 500px;">
     
 </div>
     <div id="mediaq2" style="text-align: center;">
@@ -247,8 +247,8 @@ position: fixed;
 
 </div>
 
-      </article>
-        <article class="A">
+      </div>
+        <div class="A">
 <div style="display: flex;">
     <p id="spd">Speed:1x</p>
     <input type="range" id="speed-control" value="1" min="0.5" max="2" step="0.1" style="width: 100%;"></div>
@@ -274,9 +274,9 @@ position: fixed;
         <div id="lyricsDiv2" style="border-color:transparent; align-items: center; text-align: center; justify-content: center; width: 100%; color: #d1e0ff;"></div>
     </div>
 </div>      
-</article>
+</div>
 
-      <article class="V" style="align-items: center; justify-content: center; text-align: center;">
+      <div class="V" style="align-items: center; justify-content: center; text-align: center;">
         <p id="translate6">ファイル選択</p>
 <p><small id="translate7">フォルダを選択するとプレイリストを作成します。</small></p>
 <div class="marks" style="justify-content: space-between; display: flex;">
@@ -285,7 +285,7 @@ position: fixed;
 <div class="marks-r-y" onclick="folderInput.click()" id="translate2">フォルダ選択</div>
 <input type="file" id="folder-input" accept="audio/*" webkitdirectory multiple style="display:none;">
 </div>
-      </article>
+      </div>
 
     </section>
 
