@@ -34,6 +34,8 @@ const vorbislrcviewchgbtn = document.getElementById("vcdsp");
 const vorbislrcviewchgbtnDiv = document.getElementById("vcavailable");
 const normalDsp =document.getElementById("infodsp");
 const lrc2Dsp =document.getElementById("lrcdsp");
+//AppendR6.2
+const titletag=document.getElementById("titletag");
 
 let playlist = [];
 let currentIndex = 0;
@@ -313,9 +315,53 @@ function getMetadata(file) {
 
 function displayMetadata(tags) {
     const { title, artist, album, picture } = tags;
-    titlePlaceholder.textContent = title || "タイトル不明";
-    artistPlaceholder.textContent = artist || "アーティスト不明";
-    albumPlaceholder.textContent = album || "アルバム不明";
+    titlePlaceholder.textContent = title || "No title";
+    artistPlaceholder.textContent = artist || "No artist";
+    albumPlaceholder.textContent = album || "No album";
+    // AppendR6.2: タイトルタグの更新機能
+    if(titlePlaceholder.textContent!="No title" && artistPlaceholder.textContent!="No artist" && albumPlaceholder.textContent!="No album")
+    {
+        //利用可能な情報のみDSP(パターン1:全利用可能)
+      titletag.textContent = `${title || "No title"} - ${artist || "Unknown Artist"}(${album || "Unknown Album"}) | MinatsukiTone`;  
+    }
+    else if(titlePlaceholder.textContent!="No title" && artistPlaceholder.textContent!="No artist")
+    {
+        //利用可能な情報のみDSP(パターン2:タイトルとアーティストのみ)
+      titletag.textContent = `${title || "No title"} - ${artist || "Unknown Artist"} | MinatsukiTone`;  
+    }
+    else if(titlePlaceholder.textContent!="No title" && albumPlaceholder.textContent!="No album")
+    {
+        //利用可能な情報のみDSP(パターン3:タイトルとアルバムのみ)
+      titletag.textContent = `${title || "No title"} (${album || "Unknown Album"}) | MinatsukiTone`;  
+    }
+    else if(artistPlaceholder.textContent!="No artist" && albumPlaceholder.textContent!="No album")
+    {
+        //利用可能な情報のみDSP(パターン4:アーティストとアルバムのみ)
+      titletag.textContent = `${artist || "Unknown Artist"} (${album || "Unknown Album"}) | MinatsukiTone`;  
+    }
+    else if(titlePlaceholder.textContent!="No title")
+    {
+        //利用可能な情報のみDSP(パターン5:タイトルのみ)
+      titletag.textContent = `${title || "No title"} | MinatsukiTone`;  
+    }
+    else if(artistPlaceholder.textContent!="No artist")
+    {
+        //利用可能な情報のみDSP(パターン6:アーティストのみ)
+      titletag.textContent = `${artist || "Unknown Artist"} | MinatsukiTone`;  
+    }
+    else if(albumPlaceholder.textContent!="No album")
+    {
+        //利用可能な情報のみDSP(パターン7:アルバムのみ)
+      titletag.textContent = `${album || "Unknown Album"} | MinatsukiTone`;  
+    }
+    else
+    {
+        //利用可能な情報なし
+      titletag.textContent = `MinatsukiTone - A lightweight web music player`;  
+    }
+    //------------------------------------------------
+    
+
 
 let imageUrl = "art.png";
     if (picture) {
@@ -323,9 +369,9 @@ let imageUrl = "art.png";
         imageUrl = `data:${picture.format};base64,${base64String}`;
     }
     albumArtPlaceholder.src = imageUrl;
-    abTitle.textContent = title || "タイトル不明";
-    abArtist.textContent = artist || "アーティスト不明";
-    abAlbum.textContent = album || "アルバム不明";
+    abTitle.textContent = title || "No title";
+    abArtist.textContent = artist || "No artist";
+    abAlbum.textContent = album || "No album";
     abArt.src = imageUrl;
     updateBackground(picture);
     initsys();

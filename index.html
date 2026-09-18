@@ -16,7 +16,7 @@
   <meta charset="UTF-8">
   <link rel="manifest" href="manifest.json">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MinatsukiTone - A lightweight web music player</title>
+  <title id="titletag">MinatsukiTone - A lightweight web music player</title>
     <meta name="description" content="歌詞表示にも対応!ローカル音楽ファイル再生Webアプリ-MinatsukiToneです。| MinatsukiTone - Supports display of lyrics! A modern web app for playing local music files | 支持歌词显示的本地音乐文件播放Web应用程序-MinatsukiTone">
     <meta name="keywords" content="Minatsuki, 水無月,Minazuki,MinatsukiTone,MinazukiTone,CaffeineMusic,CaffeineMusic2,Y.Yokoha,YokochaYokoha,横茶横葉">
     <link rel="stylesheet" href="fsoverride.css">
@@ -201,7 +201,7 @@ position: fixed;
         <img src="./logo.png" width="15%" height="15% border-radius:2px;">  
         <h2>MinatsukiTone</h2>   
          </div>  
-         <p>A Local Music Player Framework | Ver.6.1</p>
+         <p>A Local Music Player Framework | Ver.6.2</p>
          </div>  
 
 </div> </div>
@@ -214,7 +214,7 @@ position: fixed;
         
         <div class="Q" id="mediaq"><div class="que">
     <div id="aaholder" style="display: flex; justify-content: center; align-items: center;max-width: 500px;">
-    <img id="album-art" src="./art.png" alt="Album art" draggable="false" style="-webkit-user-drag: none; user-select: none;max-width: 500px;">
+    <img id="album-art" src="./art.png" alt="Album art" draggable="false" style="-webkit-user-drag: none; user-select: none;max-width: 450px;">
     
 </div>
     <div id="mediaq2" style="text-align: center;">
@@ -347,7 +347,7 @@ position: fixed;
         </details>
       </div>
       <div class="sidebar-box">
-        <details>
+        <details style="display: none;">
             <summary>Metadata Info</summary>
             <pre id="consolemetadata"></pre>
         </details>
