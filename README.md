@@ -76,7 +76,9 @@ spmgr.js(Splash Manager Script for Caffeine Family CSS env)
 License:MIT License  
 https://github.com/yokonoha/splash_manager  
 
+dusd.js(Detect UnSuported Devices)  
+Ported from CaffeineApps Suite and modified  
+
 FSoverrideCSS  
 License: Y.Yokoha B License(or MIT License)  
 https://github.com/yokonoha/FSoverride  
-
