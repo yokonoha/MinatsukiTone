@@ -9,13 +9,12 @@ Service link: https://minatsuki.pages.dev
 <img width="1623" height="847" alt="image" src="https://github.com/user-attachments/assets/3957bf19-5272-4070-bc90-d3d79aad0030" />
 
 <a href="https://yokonoha.pages.dev/articles/minatsukiringo">警告メッセージが表示された場合はこちらをご参照ください(About warning messages)[Japanese Reference Guide]</a>  
-## これは?? / What is this?  
+## What is this?  
 MinatsukiToneは、歌詞表示対応のWebアプリです。  
-なんでMinaduki・Minazukiにしなかったのかは、深い理由は特にないです...  
-前作CaffeineMusicとほぼ同じですが、画面サイズ追従精度の強化、歌詞表示対応化、操作感の向上させる仕組みを備えています!  
+前作CaffeineMusicとほぼ同じですが、画面サイズ追従精度の強化、歌詞表示対応化、操作感の向上させる仕組みを備えています。  
 ブラウザによって対応する音楽ファイル形式は異なりますが、一般的なブラウザはmp3, m4a, flac に対応しています。  
 歌詞は同期歌詞(lrc)とm4a埋め込み歌詞(ID3 [flacは非対応])に対応しています。ご自身で歌詞ファイルを**自作(or 購入)**してご利用ください。  
-(不正または違法な手段で歌詞ファイルや音楽ファイルを入手する行為は絶対におやめください。そのような不正なファイルをMinatsukiToneへ読み込ませることは一切禁止します。)  
+(不正または違法な手段で歌詞ファイルや音楽ファイルを入手する行為は絶対におやめください。不正なファイルをMinatsukiToneへ読み込ませることは利用規約にて一切禁止されています。)  
 LRCファイルのサンプルはsamplelrcフォルダに入っています!   
 
 <img width="1103" height="659" alt="MinatsukiTone Screenshot" src="https://github.com/user-attachments/assets/28d8b6a1-200b-45a3-aec9-c6e8540c1973" />  
@@ -29,18 +28,6 @@ EN: Warnings may appear on certain devices with functional limitations.
 This warning may appear when files cannot be loaded from the file picker and an alternative method must be used, or when the browser itself does not support the file picker.  
 On devices displaying this warning, some or all features may be unavailable.  
 
-## スタイルシート(CSS)について/About this stylesheet(CSS)  
-JP: このアプリのスタイルシートは横茶横葉作成のFSovwerrideを使用しています。このスタイルシートは配布ページの説明に従い、ご活用ください!  
-EN:  The style sheet for this application uses FSoverride created by Y.Yokoha.  
-
-## ウィジェット(TimeSysRe)について/About the clock widget(TimeSysRe)  
-TimeSysRe by Y.Yokoha  
-https://github.com/yokonoha/timesysRe  
-License:None(Free)  
-
-spmgr.js(Splash Manager Script for Caffeine Family CSS env) by Y.Yokoha  
-https://github.com/yokonoha/splash_manager  
-License:MIT License  
 
 ## 依存関係/Dependency  
 JP: このWebアプリケーションではBSDライセンスの適用されたコンポーネント「jsmediatags」を使用させていただいています。  
@@ -80,3 +67,16 @@ YKH_VCI (YOKOHA VC Inspector)
 ※(本プログラムではYKH_FIとして利用しています)  
 Apache2.0 License  
 https://github.com/yokonoha/ykh_vci  
+
+TimeSysRe  
+License:None(Free)  
+https://github.com/yokonoha/timesysRe  
+
+spmgr.js(Splash Manager Script for Caffeine Family CSS env)  
+License:MIT License  
+https://github.com/yokonoha/splash_manager  
+
+FSoverrideCSS  
+License: Y.Yokoha B License(or MIT License)  
+https://github.com/yokonoha/FSoverride  
+
