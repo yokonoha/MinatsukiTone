@@ -4,7 +4,7 @@ MinatsukiTone・水无月音乐・水無月音樂
 MinatsukiTone A lightweight Web Music Player   
 Service link: https://minatsuki.pages.dev  
 
-🌐 Supported languages: JP(日本語 Default) |[Experimental=> EN | CN (簡体字・繁体字)]  
+🌐 Supported languages: JP(日本語 Default) |[Experimental=> EN | 簡体字・繁体字]  
 
 <img width="1623" height="847" alt="image" src="https://github.com/user-attachments/assets/3957bf19-5272-4070-bc90-d3d79aad0030" />
 
@@ -82,3 +82,5 @@ Ported from CaffeineApps Suite and modified
 FSoverrideCSS  
 License: Y.Yokoha B License(or MIT License)  
 https://github.com/yokonoha/FSoverride  
+
+  
